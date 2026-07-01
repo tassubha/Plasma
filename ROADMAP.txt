@@ -1,0 +1,11 @@
+- Bug fixes
+    - [ ] fix: add redirection on Creat Post
+    - [ ] fix: main-view height issue
+    - [ ] fix: vertial side white background issue
+
+- Features
+    - [ ] add: notification support
+    - [ ] add: donor warning on side-bar
+    - [ ] add: add filters on second viewport
+    - [ ] add: basic settings
+    - [ ] add: usage guideline in learn section, taking help from chatgpt.
