@@ -2,10 +2,18 @@
     - [ ] fix: add redirection on Creat Post
     - [ ] fix: main-view height issue
     - [ ] fix: vertial side white background issue
+    - [ ] fix: edit the registration page, eliminate first name last name, add "your name"
+    - [ ] fix: set phone number as optional
+    - [ ] fix: read blood group, location, phone number from the post 
+    - [ ] fix: one account can create multiple posts
 
 - Features
-    - [ ] add: notification support
+    - [ ] add: sync post location with the profile notification
+    - [ ] add: direct creating a post section in the welcome page which will link to home, 
+    - [ ] add: notification support 
     - [ ] add: donor warning on side-bar
     - [ ] add: add filters on second viewport
     - [ ] add: basic settings
     - [ ] add: usage guideline in learn section, taking help from chatgpt.
+    - [ ] add: add a section called who can donate blood? eligibility
+    * 
