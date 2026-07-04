@@ -8,12 +8,14 @@
     - [ ] fix: one account can create multiple posts
 
 - Features
-    - [ ] add: sync post location with the profile notification
+    - [ ] add: sync post location with the profile location and push notification
     - [ ] add: direct creating a post section in the welcome page which will link to home, 
-    - [ ] add: notification support 
-    - [ ] add: donor warning on side-bar
-    - [ ] add: add filters on second viewport
-    - [ ] add: basic settings
-    - [ ] add: usage guideline in learn section, taking help from chatgpt.
+    - [ ] add: try making the post as inputs, 
+    - [ ] add: add a section health benefits of donating blood, about after care
     - [ ] add: add a section called who can donate blood? eligibility
-    * 
+    - [ ] add: donor warning on side-bar 
+    - [ ] add: add filters on second viewport (what does that mean)
+    - [ ] add: basic settings (like what ?)
+    - [ ] add: usage guideline in learn section, taking help from chatgpt.
+    
+    
