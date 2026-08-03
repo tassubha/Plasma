@@ -130,33 +130,19 @@ function Register() {
                         <FieldLegend>Register</FieldLegend>
                         <FieldGroup className="grid grid-cols-2 gap-4">
                             <Field>
-                                <FieldLabel>First Name</FieldLabel>
-                                <Input name="firstName" placeholder="Robin"/>
+                                <FieldLabel>Your Name</FieldLabel>
+                                <Input name="yourName" placeholder="Robin"/>
                             </Field>
                             <Field>
-                                <FieldLabel>Last Name</FieldLabel>
-                                <Input name="lastName" placeholder="Ahmed"/>
+                                <FieldLabel>Age</FieldLabel>
+                                <Input name="age" placeholder="22"/>
                             </Field>
                         </FieldGroup>
-                        <FieldDescription>
-                            First &amp; last names must have their first letter
-                            capitalized and all other letters lowercased.
-                        </FieldDescription>
-                        <FieldGroup>
-                            <Field>
-                                <FieldLabel>Date of Birth</FieldLabel>
-                                <div className="flex gap-2">
-                                <Input name="day" type="number" placeholder="DD"/>
-                                /
-                                <Input name="month" type="number" placeholder="MM"/>
-                                /
-                                <Input name="year" type="number" placeholder="YYYY"/>
-                                </div>
-                            </Field>
-                        </FieldGroup>
+
                         <FieldDescription>
                             Donor must be 18 years old to register.
                         </FieldDescription>
+
                         <FieldGroup className="grid grid-cols-2 gap-4">
                             <Field>
                                 <FieldLabel>District</FieldLabel>
@@ -180,34 +166,7 @@ function Register() {
                                     </SelectContent>
                                 </Select>
                             </Field>
-                            <Field>
-                                <FieldLabel>Blood Group</FieldLabel>
-                                <Select name="bloodGroup">
-                                    <SelectTrigger>
-                                        <SelectValue
-                                            placeholder="select blood group"/>
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectGroup>
-                                        {
-                                            User.bloodGroups.map((e, i) => {
-                                                return (
-                                                    <SelectItem key={i} value={e}>
-                                                        {e}
-                                                    </SelectItem>
-                                                );
-                                            })
-                                        }
-                                        </SelectGroup>
-                                    </SelectContent>
-                                </Select>
-                            </Field>
                         </FieldGroup>
-                        <Field>
-                            <FieldLabel>Phone Number</FieldLabel>
-                            <Input type="number" name="phoneNumber"
-                                placeholder="017XXXXXXX"/>
-                        </Field>
                         <FieldSeparator/>
                         <FieldGroup>
                             <Field>
