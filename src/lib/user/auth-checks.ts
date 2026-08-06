@@ -81,8 +81,8 @@ function validateDateOfBirthFields(form: FormData, setState: AuthSetState)
     return false;
 }
 
-function validateDateOfBirth(birthDate: string, setState: AuthSetState): AuthError {
-    if (getAgeFromDateString(birthDate) < 18) {
+function validateAge(age: number, setState: AuthSetState): AuthError {
+    if (age < 18) {
         setError(setState, "User must be at least 18 year old.");
         return true;
     }
@@ -138,8 +138,7 @@ function validatePasswordEquality(
     return false;
 }
 
-function validateTermsAndConditions(checkbox: any, setState: AuthSetState)
-    : AuthError {
+function validateTermsAndConditions(checkbox: any, setState: AuthSetState) : AuthError {
     if (checkbox === null) {
         setError(setState, "Please agree with Plasma's Terms & Conditions.");
         return true;
@@ -155,8 +154,7 @@ export type {
 
 export {
     validateNames,
-    validateDateOfBirthFields,
-    validateDateOfBirth,
+    validateAge,
     validateDistrict,
     validateBloodGroup,
     validatePhoneNumber,

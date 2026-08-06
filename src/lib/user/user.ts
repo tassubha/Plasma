@@ -1,11 +1,8 @@
 type Info = {
-    firstName: string,
-    lastName: string,
-    phoneNumber: string,
+    username: string,
+    age: number,
     email: string,
-    dateOfBirth: string,
     district: number,
-    bloodGroup: number
 }
 
 const districts: string[] = [
@@ -27,13 +24,10 @@ const bloodGroups: string[] = [
 
 function getUserInfo(form: FormData): Info {
     return {
-        firstName: form.get("firstName"),
-        lastName: form.get("lastName"),
-        phoneNumber: form.get("phoneNumber"),
+        username: form.get("username"),
+        age: Number(form.get("username")),
         email: form.get("email"),
-        dateOfBirth: `${form.get("year")}-${form.get("month")}-${form.get("day")}`,
         district: districts.indexOf(form.get("district") as string),
-        bloodGroup: bloodGroups.indexOf(form.get("bloodGroup") as string),
     } as Info;
 }
 

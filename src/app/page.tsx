@@ -1,6 +1,6 @@
 import { Homepage } from "@/components/homepage/homepage";
 import { App } from "@/components/main/app";
-import { createClient } from "@/lib/supabase/server-as-client"
+import { createClient } from "@/lib/supabase/server-as-client";
 
 async function Page() {
     const supabase = await createClient();
@@ -9,7 +9,7 @@ async function Page() {
 
     const { data: dbData, error: dbError } = await supabase
         .from("user_biometrics")
-        .select("")
+        .select("*")
         .eq("id", authData.user.id)
         .single();
     if (dbError) return (<h1>A backend error has occurred. Please try again later.</h1>);

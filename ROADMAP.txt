@@ -17,5 +17,3 @@
     - [ ] add: add filters on second viewport (what does that mean)
     - [ ] add: basic settings (like what ?)
     - [ ] add: usage guideline in learn section, taking help from chatgpt.
-    
-    

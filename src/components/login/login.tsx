@@ -46,7 +46,7 @@ function Login() {
 
     React.useEffect(() => {
         const { data: authStateData } =
-            supabase.auth.onAuthStateChange((event, session) => {
+            supabase.auth.onAuthStateChange((_: any, session: any) => {
                 if (!session) return;
                 router.replace("/");
             });

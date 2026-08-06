@@ -44,25 +44,8 @@ function Register() {
         const termsAndConditions: any = form.get("termsAndConditions");
 
         if (
-            UserAuthChecks.validateNames(
-                userCredentials.firstName,
-                userCredentials.lastName,
-                setMessageState
-            ) ||
-            UserAuthChecks.validateDateOfBirthFields(form, setMessageState) ||
-            UserAuthChecks.validateDateOfBirth(
-                userCredentials.dateOfBirth,
-                setMessageState
-            ) ||
+            UserAuthChecks.validateAge(userCredentials.age, setMessageState) ||
             UserAuthChecks.validateDistrict(userCredentials.district, setMessageState) ||
-            UserAuthChecks.validateBloodGroup(
-                userCredentials.bloodGroup,
-                setMessageState
-            ) ||
-            UserAuthChecks.validatePhoneNumber(
-                userCredentials.phoneNumber,
-                setMessageState
-            ) ||
             UserAuthChecks.validatePasswordEquality(
                 password,
                 confirmPassword,
@@ -90,27 +73,22 @@ function Register() {
 
     React.useEffect(() => {
         const { data: authStateData } =
-            supabase.auth.onAuthStateChange(async (event, session) => {
+            supabase.auth.onAuthStateChange(async (_: any, session: any) => {
             if (!session) return;
             const { error: dbError } = await supabase
                 .from("user_biometrics")
                 .insert({
                     id: session.user.id,
-                    firstName: userCredentials.firstName,
-                    lastName: userCredentials.lastName,
-                    dateOfBirth: userCredentials.dateOfBirth,
+                    username: userCredentials.username,
+                    age: userCredentials.age,
                     district: userCredentials.district,
-                    bloodGroup: userCredentials.bloodGroup,
-                    phoneNumber: Number(userCredentials.phoneNumber),
                 })
                 .single();
-                
             if (dbError) {
                 setMessageState({ state: "error", message: ` backend: \
                     ${dbError.message}` });
                 return;
             }
-
             setWelcomeUser(true);
         });
 
@@ -138,11 +116,9 @@ function Register() {
                                 <Input name="age" placeholder="22"/>
                             </Field>
                         </FieldGroup>
-
                         <FieldDescription>
                             Donor must be 18 years old to register.
                         </FieldDescription>
-
                         <FieldGroup className="grid grid-cols-2 gap-4">
                             <Field>
                                 <FieldLabel>District</FieldLabel>
@@ -166,6 +142,11 @@ function Register() {
                                     </SelectContent>
                                 </Select>
                             </Field>
+                            <FieldDescription>
+                                The provided district will be used send relevant
+                                notifications & let recipients view your approximate
+                                location.
+                            </FieldDescription>
                         </FieldGroup>
                         <FieldSeparator/>
                         <FieldGroup>
