@@ -1,7 +1,7 @@
 import { ChevronRight, UserRoundPlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { AboutTopic } from "@/components/homepage/about-topic"
+import { AboutTopic } from "@/components/homepage/about-topic";
 
 function Homepage()
 {

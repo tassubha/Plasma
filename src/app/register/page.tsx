@@ -1,5 +1,5 @@
-import { Register } from "@/components/register/register"
-import { SignedInWarning } from "@/components/register/signed-in-warning"
+import { Register } from "@/components/register/register";
+import { SignedInWarning } from "@/components/register/signed-in-warning";
 import { createClient } from "@/lib/supabase/server-as-client";
 
 async function Page() {

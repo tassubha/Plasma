@@ -9,7 +9,7 @@ import {
 import { TabItem, TabList } from "./tab";
 import * as React from "react";
 
-type TabPage = "home" | "notifications" |"createPost" | "learn" | "settings";
+type TabPage = "home" | "notifications" | "createPost" | "learn" | "settings";
 type TabPageState = {
     value: TabPage,
     setFn: React.Dispatch<React.SetStateAction<TabPage>>,

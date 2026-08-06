@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Tile } from "./tile"
+import { Tile } from "./tile";
 import { createClient } from "@/lib/supabase/browser-as-client";
 
 function Home({userData}: {userData: any}) {

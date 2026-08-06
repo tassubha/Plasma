@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as User from "@/lib/user/user"
+import * as User from "@/lib/user/user";
 
 type AuthState = "idle" | "error" | "success";
 type AuthMessage = {
