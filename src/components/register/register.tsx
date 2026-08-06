@@ -42,6 +42,7 @@ function Register() {
         const password = form.get("password") as string;
         const confirmPassword = form.get("confirmPassword") as string;
         const termsAndConditions: any = form.get("termsAndConditions");
+        console.log(userCredentials.age);
 
         if (
             UserAuthChecks.validateAge(userCredentials.age, setMessageState) ||
@@ -75,6 +76,7 @@ function Register() {
         const { data: authStateData } =
             supabase.auth.onAuthStateChange(async (_: any, session: any) => {
             if (!session) return;
+            console.log(userCredentials);
             const { error: dbError } = await supabase
                 .from("user_biometrics")
                 .insert({
@@ -109,7 +111,7 @@ function Register() {
                         <FieldGroup className="grid grid-cols-2 gap-4">
                             <Field>
                                 <FieldLabel>Your Name</FieldLabel>
-                                <Input name="yourName" placeholder="Robin"/>
+                                <Input name="username" placeholder="Robin"/>
                             </Field>
                             <Field>
                                 <FieldLabel>Age</FieldLabel>

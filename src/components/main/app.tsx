@@ -1,11 +1,12 @@
 "use client";
 
-import { Sidebar } from "./sidebar/sidebar"
+import { Sidebar } from "./sidebar/sidebar";
 import { MainView } from "./main-view/main-view";
 import { TabPage } from "./sidebar/tabs/tabs";
+import { Info } from "@/lib/user/user";
 import * as React from "react";
 
-function App({user, userData}: {user: any, userData: any}) {
+function App({user, userData}: {user: any, userData: Info}) {
     const [currentPage, setCurrentPage] = React.useState<TabPage>("home");
     return (
         <div className="flex w-full h-screen">

@@ -1,12 +1,13 @@
 import * as React from "react";
 import { Tile } from "./tile";
 import { createClient } from "@/lib/supabase/browser-as-client";
+import { Info } from "@/lib/user/user";
 
-function Home({userData}: {userData: any}) {
+function Home({userData}: {userData: Info}) {
     const [recipientData, setRecipientData] = React.useState<any[]>();
+    const supabase = createClient();
 
     React.useEffect(() => {
-        const supabase = createClient();
         (async function getData() {
             const { data: posts } = await supabase
                 .from("user_posts")
@@ -24,6 +25,7 @@ function Home({userData}: {userData: any}) {
             setRecipientData(data);
         })();
     }, []);
+
     return (
         <div className="flex flex-col gap-4">
         {

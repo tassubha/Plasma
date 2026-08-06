@@ -25,7 +25,7 @@ const bloodGroups: string[] = [
 function getUserInfo(form: FormData): Info {
     return {
         username: form.get("username"),
-        age: Number(form.get("username")),
+        age: Number(form.get("age")),
         email: form.get("email"),
         district: districts.indexOf(form.get("district") as string),
     } as Info;

@@ -1,8 +1,9 @@
+import { Info } from "@/lib/user/user";
 import { tabInfoData, TabPage } from "../sidebar/tabs/tabs";
 import { HorizontalRuler } from "./horizontal-ruler";
 import { PageSwitch } from "./page-switch";
 
-function MainView({user, userData, page}: {user: any, userData: any, page: TabPage}) {
+function MainView({user, userData, page}: {user: any, userData: Info, page: TabPage}) {
     const headline = tabInfoData.find(e => e.page === page)!.name;
     return (
         <>

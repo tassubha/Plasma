@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as User from "@/lib/user/user";
 
 type AuthState = "idle" | "error" | "success";
 type AuthMessage = {
@@ -21,13 +20,6 @@ function isStringAlphanumeric(str: string): boolean {
             !(code > 96 && code < 123)) return false;
     }
     return true;
-}
-
-function getAgeFromDateString(date: string): number {
-    return Math.floor(
-        Math.abs(((new Date()) as any as number) - ((new Date(date)) as any as number)) /
-            (1000 * 60 * 60 * 24 * 365)
-    );
 }
 
 function isFirstLetterUppercase(str: string): boolean {
@@ -63,19 +55,6 @@ function validateNames(firstName: string, lastName: string, setState: AuthSetSta
         !isStringRangeLowerCase(lastName, 1, lastName.length - 1)) {
         setError(setState, "All letters except the first must be lowercase in first & \
                  last names.");
-        return true;
-    }
-    return false;
-}
-
-function validateDateOfBirthFields(form: FormData, setState: AuthSetState)
-    : AuthError {
-    if (
-        (form.get("year")! as string).length === 0 ||
-        (form.get("month")! as string).length === 0 ||
-        (form.get("day")! as string).length === 0
-    ) {
-        setError(setState, "Please provide your date of birth.");
         return true;
     }
     return false;

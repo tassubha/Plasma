@@ -1,3 +1,4 @@
+import { Info } from "@/lib/user/user";
 import { Profile } from "./profile/profile";
 import { Tabs, TabPageState } from "./tabs/tabs";
 
@@ -7,7 +8,7 @@ function Sidebar({
     tabState
 }: {
     user: any,
-    userData: any,
+    userData: Info,
     tabState: TabPageState
 }) {
     return (
