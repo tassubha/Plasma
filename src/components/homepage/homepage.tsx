@@ -3,8 +3,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { AboutTopic } from "@/components/homepage/about-topic";
 
-function Homepage()
-{
+function Homepage() {
     return (
         <>
             <AboutTopic bg="bg-lime-950" imagePath="/blood_transfer.png"
@@ -40,7 +39,6 @@ function Homepage()
                     </a>
                 </div>
             </AboutTopic>
-
             <AboutTopic bg="bg-olive-950" imagePath="/question_marks.png"
                 imageAlt="question_marks.png" imageWidth={1200} imageHeight={1200}
                 imageClassName="w-128" rtl>
@@ -60,7 +58,6 @@ function Homepage()
                     making a difference.
                 </p>
             </AboutTopic>
-
             <div className="w-screen relative flex bg-cyan-950">
                 <div className="w-1/2 z-2 flex flex-col justify-center p-16">
                     <h1 className="text-5xl text-yellow-50 font-serif">
@@ -80,7 +77,6 @@ function Homepage()
                     width={1920} height={540} loading="eager" className="w-2/3
                     absolute -translate-y-1/2 right-0 top-1/2"/>
             </div>
-
             <div className="bg-[url(/mountain.webp)] bg-no-repeat bg-position-[50%_60%]
                 bg-cover w-screen flex flex-col items-center p-32">
                 <h1 className="text-5xl text-yellow-50 text-shadow-sm/50 font-serif">

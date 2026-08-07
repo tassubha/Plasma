@@ -1,5 +1,5 @@
 import { UserInfo } from "@/lib/user/user";
-import { tabInfoData, TabPage } from "../sidebar/tabs/tabs";
+import { TabPage } from "../sidebar/tabs/tabs";
 import { HorizontalRuler } from "./horizontal-ruler";
 import { PageSwitch } from "./page-switch";
 

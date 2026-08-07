@@ -30,7 +30,6 @@ function SignedInWarning({user}: {user: any}) {
                 if (session) return;
                 router.refresh();
             });
-
         return () => {
             authStateData.subscription.unsubscribe();
         }

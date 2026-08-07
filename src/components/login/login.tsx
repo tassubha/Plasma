@@ -1,6 +1,5 @@
 "use client"
 
-import * as React from "react";
 import
 {
     Card,
@@ -10,10 +9,14 @@ import
     CardContent,
     CardFooter,
 } from "@/components/ui/card";
+import {
+    MoveRight,
+    MoveUpRight,
+} from "lucide-react";
+import * as React from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { MoveRight, MoveUpRight } from "lucide-react";
 import { createClient } from "@/lib/supabase/browser-as-client";
 import { useRouter } from "next/navigation";
 import { AuthMessage } from "@/lib/user/auth-checks";
@@ -30,11 +33,10 @@ function Login() {
         const inputData = new FormData(event.currentTarget);
         const email = inputData.get("email") as string;
         const password = inputData.get("password") as string;
-        const { data, error: authError } = await supabase.auth.signInWithPassword({
+        const { error: authError } = await supabase.auth.signInWithPassword({
             email: email,
             password: password
         })
-
         if (authError) {
             setMessageState({
                 state: "error",
@@ -50,7 +52,6 @@ function Login() {
                 if (!session) return;
                 router.replace("/");
             });
-
         return () => {
             authStateData.subscription.unsubscribe();
         }

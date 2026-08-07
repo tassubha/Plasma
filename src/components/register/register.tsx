@@ -4,7 +4,6 @@ import * as React from 'react';
 import {
     UserInfo,
     UserDistricts,
-    UserBloodGroups,
     UserGetInfo,
 } from "@/lib/user/user";
 import * as UserAuthChecks from "@/lib/user/auth-checks";
@@ -25,10 +24,13 @@ import {
     SelectGroup,
     SelectItem
 } from "@/components/ui/select";
+import {
+    MoveUpRight,
+    Sparkles,
+} from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { MoveUpRight, Sparkles, Slash } from "lucide-react";
 import { createClient } from "@/lib/supabase/browser-as-client";
 import { Welcome } from "@/components/register/welcome";
 import { Session } from '@supabase/supabase-js';
@@ -50,7 +52,6 @@ function Register() {
         const confirmPassword = form.get("confirmPassword") as string;
         const termsAndConditions: any = form.get("termsAndConditions");
         console.log(userCredentials.age);
-
         if (
             UserAuthChecks.validateAge(userCredentials.age, setMessageState) ||
             UserAuthChecks.validateDistrict(userCredentials.district, setMessageState) ||
@@ -64,12 +65,10 @@ function Register() {
                 setMessageState
             )
         ) return;
-
         const { data, error: authError } = await supabase.auth.signUp({
             email: email,
             password: password
         });
-
         if (authError) {
             setMessageState({
                 state: "error",
@@ -95,7 +94,6 @@ function Register() {
             }
             setWelcomeUser(true);
         });
-
         return () => {
             authStateData.subscription.unsubscribe();
         }

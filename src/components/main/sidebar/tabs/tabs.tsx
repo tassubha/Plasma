@@ -8,15 +8,20 @@ import {
     Settings,
     LucideIcon,
 } from "lucide-react";
-import { TabItem, TabList } from "./tab";
+import {
+    TabItem,
+    TabList,
+} from "./tab";
 import * as React from "react";
 
 type TabPage = "Home" | "Notifications" | "Experiences" | "Thalassemia" | "Create Post" |
     "Learn" | "Settings";
+
 type TabPageState = {
     value: TabPage,
     setFn: React.Dispatch<React.SetStateAction<TabPage>>,
 }
+
 type TabInfo = {
     icon: LucideIcon,
     page: TabPage

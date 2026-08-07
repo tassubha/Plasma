@@ -7,7 +7,6 @@ async function Page() {
     const supabase = await createClient();
     const { data: authData } = await supabase.auth.getUser();
     if (authData.user === null) return <Homepage/>;
-
     const { data: dbData, error: dbError } = await supabase
         .from("user_biometrics")
         .select("*")

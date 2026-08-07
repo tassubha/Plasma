@@ -11,7 +11,7 @@ import {
     Field,
     FieldGroup,
     FieldLabel,
-    FieldSeparator
+    FieldSeparator,
 } from "@/components/ui/field";
 import {
     Select,
@@ -21,16 +21,19 @@ import {
     SelectGroup,
     SelectItem,
 } from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import { createClient } from "@/lib/supabase/browser-as-client";
-import * as React from "react";
-import { Input } from "@/components/ui/input";
 import {
     UserDistricts,
     UserBloodGroups,
 } from "@/lib/user/user"
-import { PostGetInfo, PostInfo } from "@/lib/post";
+import {
+    PostGetInfo,
+    PostInfo,
+} from "@/lib/post";
+import * as React from "react";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { createClient } from "@/lib/supabase/browser-as-client";
+import { Input } from "@/components/ui/input";
 
 function CreatePost({user}: {user: any}) {
     const supabase = createClient();

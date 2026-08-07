@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils"
 import * as React from "react";
+import { cn } from "@/lib/utils"
 import { LucideIcon } from "lucide-react";
 import { TabPage } from "./tabs";
 
