@@ -51,7 +51,6 @@ function Register() {
         const password = form.get("password") as string;
         const confirmPassword = form.get("confirmPassword") as string;
         const termsAndConditions: any = form.get("termsAndConditions");
-        console.log(userCredentials.age);
         if (
             UserAuthChecks.validateAge(userCredentials.age, setMessageState) ||
             UserAuthChecks.validateDistrict(userCredentials.district, setMessageState) ||

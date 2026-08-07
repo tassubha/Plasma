@@ -7,7 +7,6 @@ import { UserInfo } from "@/lib/user/user";
 import * as React from "react";
 
 function App({user, userData}: {user: any, userData: UserInfo}) {
-    console.log(userData);
     const [currentPage, setCurrentPage] = React.useState<TabPage>("Home");
     return (
         <div className="flex w-full h-screen">
