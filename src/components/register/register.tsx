@@ -1,12 +1,10 @@
 "use client"
 
-import * as React from 'react';
 import {
     UserInfo,
     UserDistricts,
     UserGetInfo,
 } from "@/lib/user/user";
-import * as UserAuthChecks from "@/lib/user/auth-checks";
 import {
     Field,
     FieldSet,
@@ -28,6 +26,8 @@ import {
     MoveUpRight,
     Sparkles,
 } from "lucide-react";
+import * as React from 'react';
+import * as UserAuthChecks from "@/lib/user/auth-checks";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";

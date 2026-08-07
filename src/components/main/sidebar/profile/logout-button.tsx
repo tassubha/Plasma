@@ -1,9 +1,9 @@
 "use client";
 
+import * as React from "react";
 import { Button } from "@/components/ui/button"
 import { createClient } from "@/lib/supabase/browser-as-client"
 import { useRouter } from "next/navigation";
-import * as React from "react";
 
 function LogoutButton() {
     const supabase = createClient();

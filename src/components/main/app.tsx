@@ -1,10 +1,10 @@
 "use client";
 
+import * as React from "react";
 import { Sidebar } from "./sidebar/sidebar";
 import { MainView } from "./main-view/main-view";
 import { TabPage } from "./sidebar/tabs/tabs";
 import { UserInfo } from "@/lib/user/user";
-import * as React from "react";
 
 function App({user, userData}: {user: any, userData: UserInfo}) {
     const [currentPage, setCurrentPage] = React.useState<TabPage>("Home");

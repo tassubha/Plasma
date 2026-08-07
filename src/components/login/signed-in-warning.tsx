@@ -7,10 +7,10 @@ import {
     CardContent,
     CardFooter,
 } from "@/components/ui/card";
+import * as React from "react";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/browser-as-client";
 import { useRouter } from "next/navigation";
-import * as React from "react";
 
 function SignedInWarning({user}: {user: any}) {
     const supabase = createClient();

@@ -8,8 +8,8 @@ import {
     Phone,
     MapPin
 } from "lucide-react";
-import { PostInfo } from "@/lib/post";
 import * as React from "react";
+import { PostInfo } from "@/lib/post";
 import { cn } from "@/lib/utils"; 
 import { ProfileIcon } from "../sidebar/profile/profile-icon";
 
