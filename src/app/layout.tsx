@@ -24,7 +24,7 @@ function RootLayout({ children }: Readonly<{children: React.ReactNode;}>) {
         <html lang="en" className={`${lora.variable} ${geist.variable}
             ${ibmPlexMono.variable} antialiased box-border`} suppressHydrationWarning>
             <body className="[&>div]:max-w-384 flex flex-col items-center
-                bg-(--background)">
+                bg-background">
                 <ThemeProvider>{children}</ThemeProvider>
             </body>
         </html>

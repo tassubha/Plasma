@@ -1,4 +1,4 @@
-type Info = {
+type PostInfo = {
     id: string,
     name: string,
     phoneNumber: number,
@@ -8,5 +8,5 @@ type Info = {
 }
 
 export type {
-    Info,
+    PostInfo,
 }

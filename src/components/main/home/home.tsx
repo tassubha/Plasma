@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Tile } from "./tile";
 import { createClient } from "@/lib/supabase/browser-as-client";
-import { Info } from "@/lib/user/user";
+import { UserInfo } from "@/lib/user/user";
 
-function Home({userData}: {userData: Info}) {
+function Home({userData}: {userData: UserInfo}) {
     const [recipientData, setRecipientData] = React.useState<any[]>();
     const supabase = createClient();
 

@@ -1,8 +1,8 @@
 import { ProfileIcon } from "./profile-icon";
 import { LogoutButton } from "./logout-button";
-import { Info } from "@/lib/user/user";
+import { UserInfo } from "@/lib/user/user";
 
-function Profile({user, userData}: {user: any, userData: Info}) {
+function Profile({user, userData}: {user: any, userData: UserInfo}) {
     return (
         <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">

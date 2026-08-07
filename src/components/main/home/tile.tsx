@@ -1,11 +1,14 @@
 "use client";
 
-import { Phone, MapPin, CalendarClock  } from "lucide-react";
 import * as React from "react";
+import { Phone, MapPin, CalendarClock  } from "lucide-react";
 import { cn } from "@/lib/utils"; 
 
 import { ProfileIcon } from "../sidebar/profile/profile-icon";
-import * as User from "@/lib/user/user";
+import {
+    UserBloodGroups,
+    UserDistricts,
+} from "@/lib/user/user";
 
 const monthNames = [
     "January", "February", "March", "April", "May", "June", "July", "August", "September",
@@ -61,12 +64,12 @@ function Tile({
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                     <Badge className="text-olive-300 bg-red-950 border-2 border-red-800">
-                        { User.bloodGroups[userData.bloodGroup] }
+                        { UserBloodGroups[userData.bloodGroup] }
                     </Badge>
                     <Badge className="text-black font-medium bg-olive-200 border-2
                         border-olive-400">
                         <MapPin className="size-[1em]"/>
-                        { User.districts[userData.district] }
+                        { UserDistricts[userData.district] }
                     </Badge>
                 </div>
                 <Badge className="text-black font-medium bg-yellow-500 border-2

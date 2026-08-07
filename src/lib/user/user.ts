@@ -1,11 +1,11 @@
-type Info = {
+type UserInfo = {
     id: string,
     username: string,
     age: number,
     district: number,
 }
 
-const districts: string[] = [
+const UserDistricts: string[] = [
     "Bagerhat", "Bandarban", "Barguna", "Barishal", "Bhola", "Bogura", "Brahmanbaria",
     "Chandpur", "Chapai Nawabganj", "Chittagong", "Chuadanga", "Cox's Bazar", "Cumilla",
     "Dhaka", "Dinajpur", "Faridpur", "Feni", "Gaibandha", "Gazipur", "Gopalganj",
@@ -18,24 +18,24 @@ const districts: string[] = [
     "Sherpur", "Sirajganj", "Sunamganj", "Sylhet", "Tangail", "Thakurgaon"
 ];
 
-const bloodGroups: string[] = [
+const UserBloodGroups: string[] = [
     "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"
 ];
 
-function getUserInfo(form: FormData): Info {
+function UserGetInfo(form: FormData): UserInfo {
     return {
         username: form.get("username"),
         age: Number(form.get("age")),
-        district: districts.indexOf(form.get("district") as string),
-    } as Info;
+        district: UserDistricts.indexOf(form.get("district") as string),
+    } as UserInfo;
 }
 
 export type {
-    Info,
+    UserInfo,
 };
 
 export {
-    districts,
-    bloodGroups,
-    getUserInfo,
+    UserDistricts,
+    UserBloodGroups,
+    UserGetInfo,
 };

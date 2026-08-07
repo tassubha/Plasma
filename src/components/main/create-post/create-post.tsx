@@ -13,7 +13,7 @@ import {
     FieldLabel,
     FieldSeparator
 } from "@/components/ui/field";
-import { 
+import {
     Select,
     SelectTrigger,
     SelectValue,
@@ -26,7 +26,11 @@ import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/browser-as-client";
 import * as React from "react";
 import { Input } from "@/components/ui/input";
-import * as User from "@/lib/user/user"
+import {
+    UserInfo,
+    UserDistricts,
+    UserBloodGroups,
+} from "@/lib/user/user"
 
 function CreatePost({user}: {user: any}) {
     const supabase = createClient();
@@ -45,8 +49,8 @@ function CreatePost({user}: {user: any}) {
                 id: user.id,
                 name: name,
                 phoneNumber: phoneNumber,
-                district: User.districts.indexOf(district),
-                bloodGroup: User.bloodGroups.indexOf(bloodGroup),
+                district: UserDistricts.indexOf(district),
+                bloodGroup: UserBloodGroups.indexOf(bloodGroup),
                 additionalMessage: additionalMessage,
             })
             .single();
@@ -82,7 +86,7 @@ function CreatePost({user}: {user: any}) {
                                 <SelectContent>
                                     <SelectGroup>
                                     {
-                                        User.districts.map((e, i) => {
+                                        UserDistricts.map((e, i) => {
                                             return (
                                                 <SelectItem key={i} value={e}>
                                                     {e}
@@ -103,7 +107,7 @@ function CreatePost({user}: {user: any}) {
                                 <SelectContent>
                                     <SelectGroup>
                                     {
-                                        User.bloodGroups.map((e, i) => {
+                                        UserBloodGroups.map((e, i) => {
                                             return (
                                                 <SelectItem key={i} value={e}>
                                                     {e}

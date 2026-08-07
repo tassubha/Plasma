@@ -3,10 +3,10 @@
 import { Sidebar } from "./sidebar/sidebar";
 import { MainView } from "./main-view/main-view";
 import { TabPage } from "./sidebar/tabs/tabs";
-import { Info } from "@/lib/user/user";
+import { UserInfo } from "@/lib/user/user";
 import * as React from "react";
 
-function App({user, userData}: {user: any, userData: Info}) {
+function App({user, userData}: {user: any, userData: UserInfo}) {
     console.log(userData);
     const [currentPage, setCurrentPage] = React.useState<TabPage>("Home");
     return (

@@ -1,7 +1,12 @@
 "use client"
 
 import * as React from 'react';
-import * as User from "@/lib/user/user";
+import {
+    UserInfo,
+    UserDistricts,
+    UserBloodGroups,
+    UserGetInfo,
+} from "@/lib/user/user";
 import * as UserAuthChecks from "@/lib/user/auth-checks";
 import {
     Field,
@@ -32,14 +37,14 @@ function Register() {
     const [messageState, setMessageState] =
         React.useState<UserAuthChecks.AuthMessage>({state: "idle", message: ""});
     const [welcomeUser, setWelcomeUser] = React.useState<boolean>(false);
-    let userCredentials = {} as User.Info;
+    let userCredentials = {} as UserInfo;
     const supabase = createClient();
 
     async function sendUserDataToSupabase(event: React.SyntheticEvent<HTMLFormElement>) {
         event.preventDefault();
         setMessageState({...messageState, state: "idle"});
         const form = new FormData(event.currentTarget);
-        userCredentials = User.getUserInfo(form);
+        userCredentials = UserGetInfo(form);
         const email = form.get("email") as string;
         const password = form.get("password") as string;
         const confirmPassword = form.get("confirmPassword") as string;
@@ -130,7 +135,7 @@ function Register() {
                                     <SelectContent>
                                         <SelectGroup>
                                         {
-                                            User.districts.map((e, i) => {
+                                            UserDistricts.map((e, i) => {
                                                 return (
                                                     <SelectItem key={i} value={e}>
                                                         {e}
