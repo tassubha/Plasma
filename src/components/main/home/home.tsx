@@ -1,28 +1,19 @@
 import * as React from "react";
 import { Tile } from "./tile";
 import { createClient } from "@/lib/supabase/browser-as-client";
-import { UserInfo } from "@/lib/user/user";
+import { PostInfo } from "@/lib/post";
 
-function Home({userData}: {userData: UserInfo}) {
-    const [recipientData, setRecipientData] = React.useState<any[]>();
+function Home() {
+    const [recipientData, setRecipientData] = React.useState<PostInfo[]>();
     const supabase = createClient();
 
     React.useEffect(() => {
-        (async function getData() {
+        (async function getTileData() {
             const { data: posts } = await supabase
                 .from("user_posts")
                 .select("*");
             if (!posts) return;
-            const data = await Promise.all(posts.map(async (e) => {
-                const { data: biometric } = await supabase
-                    .from("user_biometrics")
-                    .select()
-                    .eq("id", e.id)
-                    .single();
-                if (!biometric) return;
-                return { ...e, ...biometric };
-            }));
-            setRecipientData(data);
+            setRecipientData(posts);
         })();
     }, []);
 
@@ -30,10 +21,7 @@ function Home({userData}: {userData: UserInfo}) {
         <div className="flex flex-col gap-4">
         {
             recipientData?.map((e, i) => {
-                return (
-                    <Tile key={i} userData={e} message={e.message as (string | null)}
-                        donationDate={new Date(e.donationDateLimit as string)}/>
-                );
+                return <Tile post={e} key={i} />;
             })
         }
         </div>

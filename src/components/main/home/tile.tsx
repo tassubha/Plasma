@@ -1,20 +1,17 @@
 "use client";
 
-import * as React from "react";
-import { Phone, MapPin, CalendarClock  } from "lucide-react";
-import { cn } from "@/lib/utils"; 
-
-import { ProfileIcon } from "../sidebar/profile/profile-icon";
 import {
     UserBloodGroups,
     UserDistricts,
-    UserInfo,
 } from "@/lib/user/user";
-
-const monthNames = [
-    "January", "February", "March", "April", "May", "June", "July", "August", "September",
-    "October", "November", "December"
-];
+import {
+    Phone,
+    MapPin
+} from "lucide-react";
+import { PostInfo } from "@/lib/post";
+import * as React from "react";
+import { cn } from "@/lib/utils"; 
+import { ProfileIcon } from "../sidebar/profile/profile-icon";
 
 function hidePhoneNumber(phoneNumber: string) {
     let result = [...phoneNumber];
@@ -33,16 +30,8 @@ function Badge({children, className, ...props}: React.ComponentProps<"div">) {
     );
 }
 
-function Tile({
-    userData,
-    message,
-    donationDate
-}: {
-    userData: UserInfo,
-    message?: string | null,
-    donationDate: Date
-}) {
-    const phoneNumber = '0' + (userData.phoneNumber as number).toString();
+function Tile({ post }: { post: PostInfo }) {
+    const phoneNumber = '0' + (post.phoneNumber as number).toString();
     const hiddenPhoneNumber = hidePhoneNumber(phoneNumber);
     const [isPhoneNumberHidden, setIsPhoneNumberHidden] = React.useState<boolean>(true);
     return (
@@ -50,9 +39,9 @@ function Tile({
             rounded-xl p-2">
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                    <ProfileIcon firstName={userData.firstName}/>
+                    <ProfileIcon username={post.name}/>
                     <p className="text-sm font-bold">
-                        {userData.firstName} {userData.lastName}
+                        {post.name}
                     </p>
                 </div>
                 <Badge className="font-mono font-bold text-olive-300 bg-green-900 border-2
@@ -65,27 +54,22 @@ function Tile({
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                     <Badge className="text-olive-300 bg-red-950 border-2 border-red-800">
-                        { UserBloodGroups[userData.bloodGroup] }
+                        { UserBloodGroups[post.bloodGroup] }
                     </Badge>
                     <Badge className="text-black font-medium bg-olive-200 border-2
                         border-olive-400">
                         <MapPin className="size-[1em]"/>
-                        { UserDistricts[userData.district] }
+                        { UserDistricts[post.district] }
                     </Badge>
                 </div>
-                <Badge className="text-black font-medium bg-yellow-500 border-2
-                    border-yellow-700">
-                    <CalendarClock className="size-[1em]"/>within{" "}
-                    { monthNames[donationDate.getMonth()] } { donationDate.getDate() }
-                </Badge>
             </div>
             <div className="font-medium text-sm w-2/3">
             {
-                message &&
+                post.additionalMessage &&
                 (
                     <>
                         <span className="font-bold underline decoration-2">message</span>
-                        <span>: {message}</span>
+                        <span>: {post.additionalMessage}</span>
                     </>
                 )
             }
