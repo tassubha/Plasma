@@ -6,6 +6,7 @@
     - [x] fix: read blood group, location, phone number from the post 
     - [ ] fix: one account can create multiple posts
     - [ ] improve: add type property for all <Input /> elements
+    - [ ] fix: reduce use of any to get better error messages
 
 - Features
     - [ ] add: sync post location with the profile location and push notification

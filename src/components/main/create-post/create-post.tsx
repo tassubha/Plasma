@@ -27,32 +27,21 @@ import { createClient } from "@/lib/supabase/browser-as-client";
 import * as React from "react";
 import { Input } from "@/components/ui/input";
 import {
-    UserInfo,
     UserDistricts,
     UserBloodGroups,
 } from "@/lib/user/user"
+import { PostGetInfo, PostInfo } from "@/lib/post";
 
 function CreatePost({user}: {user: any}) {
     const supabase = createClient();
 
     async function onSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
         e.preventDefault();
-        const form = new FormData(e.currentTarget);
-        const name = form.get("name") as string;
-        const phoneNumber = form.get("phoneNumber") as string;
-        const district = form.get("district") as string;
-        const bloodGroup = form.get("bloodGroup") as string;
-        const additionalMessage = form.get("additionalMessage") as string;
+        let post: PostInfo = PostGetInfo(new FormData(e.currentTarget));
+        post.id = user.id;
         const { error: dbError } = await supabase
             .from("user_posts")
-            .insert({ 
-                id: user.id,
-                name: name,
-                phoneNumber: phoneNumber,
-                district: UserDistricts.indexOf(district),
-                bloodGroup: UserBloodGroups.indexOf(bloodGroup),
-                additionalMessage: additionalMessage,
-            })
+            .insert(post)
             .single();
         if (dbError) console.log(dbError);
     }

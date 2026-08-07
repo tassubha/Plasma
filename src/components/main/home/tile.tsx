@@ -8,6 +8,7 @@ import { ProfileIcon } from "../sidebar/profile/profile-icon";
 import {
     UserBloodGroups,
     UserDistricts,
+    UserInfo,
 } from "@/lib/user/user";
 
 const monthNames = [
@@ -37,7 +38,7 @@ function Tile({
     message,
     donationDate
 }: {
-    userData: any,
+    userData: UserInfo,
     message?: string | null,
     donationDate: Date
 }) {
