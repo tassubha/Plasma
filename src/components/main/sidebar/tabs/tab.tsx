@@ -31,7 +31,7 @@ function TabItem({
     return (
         <button className={`border-2 px-4 rounded-full flex justify-start items-center
             font-medium gap-2 ${!active && `hover:border-stone-500`}
-            ${active && `bg-(--primary) border-(--accent) shadow-sm/40`}`}
+            ${active && `bg-primary border-accent`}`}
             
             onClick={() => {
                 tabStateSetFn(value as TabPage);

@@ -26,6 +26,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { MoveUpRight, Sparkles, Slash } from "lucide-react";
 import { createClient } from "@/lib/supabase/browser-as-client";
 import { Welcome } from "@/components/register/welcome";
+import { Session } from '@supabase/supabase-js';
 
 function Register() {
     const [messageState, setMessageState] =
@@ -39,6 +40,7 @@ function Register() {
         setMessageState({...messageState, state: "idle"});
         const form = new FormData(event.currentTarget);
         userCredentials = User.getUserInfo(form);
+        const email = form.get("email") as string;
         const password = form.get("password") as string;
         const confirmPassword = form.get("confirmPassword") as string;
         const termsAndConditions: any = form.get("termsAndConditions");
@@ -59,7 +61,7 @@ function Register() {
         ) return;
 
         const { data, error: authError } = await supabase.auth.signUp({
-            email: userCredentials.email,
+            email: email,
             password: password
         });
 
@@ -74,17 +76,12 @@ function Register() {
 
     React.useEffect(() => {
         const { data: authStateData } =
-            supabase.auth.onAuthStateChange(async (_: any, session: any) => {
+            supabase.auth.onAuthStateChange(async (_: any, session: (Session | null)) => {
             if (!session) return;
-            console.log(userCredentials);
+            userCredentials.id = session.user.id;
             const { error: dbError } = await supabase
                 .from("user_biometrics")
-                .insert({
-                    id: session.user.id,
-                    username: userCredentials.username,
-                    age: userCredentials.age,
-                    district: userCredentials.district,
-                })
+                .insert(userCredentials)
                 .single();
             if (dbError) {
                 setMessageState({ state: "error", message: ` backend: \
@@ -104,10 +101,11 @@ function Register() {
             {
             welcomeUser ? <Welcome/> : (
             <div className="absolute left-1/2 top-16 -translate-x-1/2 w-96 min-w-64
-                bg-(--background) p-4 rounded-lg border-2">
+                bg-background p-4 rounded-lg border-2">
                 <form onSubmit={sendUserDataToSupabase}>
                     <FieldSet>
                         <FieldLegend>Register</FieldLegend>
+                        <FieldSeparator/>
                         <FieldGroup className="grid grid-cols-2 gap-4">
                             <Field>
                                 <FieldLabel>Your Name</FieldLabel>

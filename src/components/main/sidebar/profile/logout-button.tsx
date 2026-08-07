@@ -26,7 +26,7 @@ function LogoutButton() {
     }, []);
 
     return (
-        <Button onClick={logout}>Logout</Button>
+        <Button className="border-2 border-green-950" onClick={logout}>Logout</Button>
     );
 }
 

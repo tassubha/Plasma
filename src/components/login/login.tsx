@@ -88,7 +88,7 @@ function Login() {
                             }
                         </CardContent>
                         <CardFooter className="flex justify-between">
-                            <p className="text-xs font-bold text-(--muted-foreground)">
+                            <p className="text-xs font-bold text-muted-foreground">
                                 Do not have an account yet? <a href="/register"
                                     className="text-black underline decoration-2">
                                     Register<MoveUpRight className="inline size-[1.2em]"

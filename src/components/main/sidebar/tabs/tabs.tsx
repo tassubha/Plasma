@@ -1,31 +1,35 @@
 import {
     House,
+    Bell,
+    Sparkles,
+    BadgeAlert,
     Plus,
     Notebook,
     Settings,
     LucideIcon,
-    Bell
 } from "lucide-react";
 import { TabItem, TabList } from "./tab";
 import * as React from "react";
 
-type TabPage = "home" | "notifications" | "createPost" | "learn" | "settings";
+type TabPage = "Home" | "Notifications" | "Experiences" | "Thalassemia" | "Create Post" |
+    "Learn" | "Settings";
 type TabPageState = {
     value: TabPage,
     setFn: React.Dispatch<React.SetStateAction<TabPage>>,
 }
 type TabInfo = {
     icon: LucideIcon,
-    name: string,
     page: TabPage
 }
 
 const tabInfoData: TabInfo[] = [
-    { icon: House, name: "Home", page: "home" },
-    { icon: Bell, name: "Notifications", page: "notifications"},
-    { icon: Plus, name: "Create Post", page: "createPost" },
-    { icon: Notebook, name: "Learn", page: "learn" },
-    { icon: Settings, name: "Settings", page: "settings" },
+    { icon: House, page: "Home" },
+    { icon: Bell, page: "Notifications" },
+    { icon: Sparkles, page: "Experiences" },
+    { icon: BadgeAlert, page: "Thalassemia" },
+    { icon: Plus, page: "Create Post" },
+    { icon: Notebook, page: "Learn" },
+    { icon: Settings, page: "Settings" },
 ];
 
 function Tabs({tabState}: {tabState: TabPageState}) {
@@ -36,7 +40,7 @@ function Tabs({tabState}: {tabState: TabPageState}) {
                 return (
                     <TabItem Icon={e.icon} active={tabState.value === e.page}
                         tabStateSetFn={tabState.setFn} value={e.page} key={i}>
-                        {e.name}
+                        {e.page}
                     </TabItem>
                 );
             })

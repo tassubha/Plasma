@@ -2,36 +2,52 @@
 
 import { 
     Card,
-    CardFooter,
+    CardHeader,
+    CardTitle,
     CardContent,
-    CardDescription,
+    CardFooter,
 } from "@/components/ui/card";
 import {
-    Popover,
-    PopoverTrigger,
-    PopoverContent,
-} from "@/components/ui/popover";
-import { Calendar } from "@/components/ui/calendar";
+    Field,
+    FieldGroup,
+    FieldLabel,
+    FieldSeparator
+} from "@/components/ui/field";
+import { 
+    Select,
+    SelectTrigger,
+    SelectValue,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/browser-as-client";
-import { ChevronDown } from "lucide-react";
-import { format } from "date-fns";
 import * as React from "react";
+import { Input } from "@/components/ui/input";
+import * as User from "@/lib/user/user"
 
 function CreatePost({user}: {user: any}) {
     const supabase = createClient();
-    const [donationDateLimit, setDonationDateLimit] = React.useState<Date>();
 
     async function onSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
         e.preventDefault();
-        const message = (new FormData(e.currentTarget)).get("message") as (string | null);
+        const form = new FormData(e.currentTarget);
+        const name = form.get("name") as string;
+        const phoneNumber = form.get("phoneNumber") as string;
+        const district = form.get("district") as string;
+        const bloodGroup = form.get("bloodGroup") as string;
+        const additionalMessage = form.get("additionalMessage") as string;
         const { error: dbError } = await supabase
             .from("user_posts")
             .insert({ 
                 id: user.id,
-                message: message,
-                donationDateLimit: donationDateLimit
+                name: name,
+                phoneNumber: phoneNumber,
+                district: User.districts.indexOf(district),
+                bloodGroup: User.bloodGroups.indexOf(bloodGroup),
+                additionalMessage: additionalMessage,
             })
             .single();
         if (dbError) console.log(dbError);
@@ -39,32 +55,71 @@ function CreatePost({user}: {user: any}) {
 
     return (
         <form onSubmit={onSubmit}>
-            <Card className="w-96 relative left-1/2 -translate-x-1/2">
+            <Card className="w-96 absolute top-2/5 left-1/2 -translate-1/2">
+                <CardHeader>
+                    <CardTitle>Post for a Recipient</CardTitle>
+                </CardHeader>
+                <FieldSeparator/>
                 <CardContent className="flex flex-col gap-4 items-start">
-                    <CardDescription>
-                        By submitting a post, you will become a recipient. And will stay
-                        as a recipient until your post is deleted or marked as complete.
-                        <br/><br/>
-                        Please provide a message and donation duration as a date to create
-                        a post. All the other necessary information are taken from your
-                        account.
-                    </CardDescription>
-                    <Textarea name="message" rows={7}
-                        placeholder={`*this textarea can optionally be blank*`}/>
-                    <Popover>
-                        <PopoverTrigger asChild>
-                            <Button variant="outline" className="justify-between">
-                                {donationDateLimit ? format(donationDateLimit, "PPP") :
-                                    "Pick donation date limit"}
-                                <ChevronDown/>
-                            </Button>
-                        </PopoverTrigger>
-                        <PopoverContent align="start">
-                            <Calendar mode="single" selected={donationDateLimit}
-                                onSelect={setDonationDateLimit}
-                                defaultMonth={donationDateLimit}/>
-                        </PopoverContent>
-                    </Popover>
+                    <FieldGroup className="grid grid-cols-2 gap-4">
+                        <Field>
+                            <FieldLabel>Name</FieldLabel>
+                            <Input name="name" type="text" required={true} />
+                        </Field>
+                        <Field>
+                            <FieldLabel>Phone Number</FieldLabel>
+                            <Input name="phoneNumber" type="number"
+                                placeholder="017XXXXXXXX" required={true} />
+                        </Field>
+                    </FieldGroup>
+                    <FieldGroup className="grid grid-cols-2 gap-4">
+                        <Field>
+                            <FieldLabel>District</FieldLabel>
+                            <Select name="district" required={true}>
+                                <SelectTrigger>
+                                    <SelectValue placeholder="select district"/>
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectGroup>
+                                    {
+                                        User.districts.map((e, i) => {
+                                            return (
+                                                <SelectItem key={i} value={e}>
+                                                    {e}
+                                                </SelectItem>
+                                            );
+                                        })
+                                    }
+                                    </SelectGroup>
+                                </SelectContent>
+                            </Select>
+                        </Field>
+                        <Field>
+                            <FieldLabel>Blood Group</FieldLabel>
+                            <Select name="bloodGroup" required={true}>
+                                <SelectTrigger>
+                                    <SelectValue placeholder="select blood group"/>
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectGroup>
+                                    {
+                                        User.bloodGroups.map((e, i) => {
+                                            return (
+                                                <SelectItem key={i} value={e}>
+                                                    {e}
+                                                </SelectItem>
+                                            );
+                                        })
+                                    }
+                                    </SelectGroup>
+                                </SelectContent>
+                            </Select>
+                        </Field>
+                    </FieldGroup>
+                    <Field>
+                        <FieldLabel>Additional Message (optional)</FieldLabel>
+                        <Textarea name="additionalMessage" />
+                    </Field>
                 </CardContent>
                 <CardFooter className="flex justify-end p-4">
                     <Button type="submit">Submit</Button>
