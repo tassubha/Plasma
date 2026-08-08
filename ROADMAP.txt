@@ -1,6 +1,6 @@
 - Bug fixes
     - [x] fix: add redirection on Creat Post
-    - [ ] fix: main-view height issue
+    - [x] fix: main-view height issue
     - [ ] fix: vertial side white background issue
     - [x] fix: edit the registration page, eliminate first name last name, add "your name"
     - [x] fix: read blood group, location, phone number from the post 
