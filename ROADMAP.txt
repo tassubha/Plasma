@@ -1,5 +1,5 @@
 - Bug fixes
-    - [ ] fix: add redirection on Creat Post
+    - [x] fix: add redirection on Creat Post
     - [ ] fix: main-view height issue
     - [ ] fix: vertial side white background issue
     - [x] fix: edit the registration page, eliminate first name last name, add "your name"

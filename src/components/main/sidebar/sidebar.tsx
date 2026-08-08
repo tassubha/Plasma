@@ -1,6 +1,10 @@
+import {
+    TabPage,
+    Tabs,
+} from "./tabs/tabs";
 import { UserInfo } from "@/lib/user/user";
 import { Profile } from "./profile/profile";
-import { Tabs, TabPageState } from "./tabs/tabs";
+import { ReactState } from "@/lib/react-state";
 
 function Sidebar({
     user,
@@ -9,7 +13,7 @@ function Sidebar({
 }: {
     user: any,
     userData: UserInfo,
-    tabState: TabPageState
+    tabState: ReactState<TabPage>
 }) {
     return (
         <>

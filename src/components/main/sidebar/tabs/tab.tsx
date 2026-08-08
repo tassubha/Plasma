@@ -1,7 +1,7 @@
-import * as React from "react";
 import { cn } from "@/lib/utils"
 import { LucideIcon } from "lucide-react";
 import { TabPage } from "./tabs";
+import { ReactState } from "@/lib/react-state";
 
 function TabList({children, className, ...props}: {children: any, className?: any}) {
     return (
@@ -18,24 +18,25 @@ function TabList({children, className, ...props}: {children: any, className?: an
 function TabItem({
     children,
     Icon,
-    active=false,
-    tabStateSetFn,
-    value,
+    active,
+    tabState,
+    currentTab,
 }: {
     children: any,
     Icon: LucideIcon,
-    active?: boolean,
-    tabStateSetFn: React.Dispatch<React.SetStateAction<TabPage>>,
-    value: string
+    active: boolean,
+    tabState: ReactState<TabPage>
+    currentTab: TabPage
 }) {
     return (
-        <button className={`border-2 px-4 rounded-full flex justify-start items-center
-            font-medium gap-2 ${!active && `hover:border-stone-500`}
-            ${active && `bg-primary border-accent`}`}
-            
-            onClick={() => {
-                tabStateSetFn(value as TabPage);
-            }}>
+        <button
+            className={
+                `border-2 px-4 rounded-full flex justify-start items-center
+                font-medium gap-2 ${active ? `bg-primary border-accent` :
+                `hover:border-stone-500`}`
+            }
+            onClick={() => tabState.set(currentTab)}
+        >
             <Icon className="size-[1em]"/>{children}
         </button>
     );

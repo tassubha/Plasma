@@ -12,15 +12,10 @@ import {
     TabItem,
     TabList,
 } from "./tab";
-import * as React from "react";
+import { ReactState } from "@/lib/react-state";
 
 type TabPage = "Home" | "Notifications" | "Experiences" | "Thalassemia" | "Create Post" |
     "Learn" | "Settings";
-
-type TabPageState = {
-    value: TabPage,
-    setFn: React.Dispatch<React.SetStateAction<TabPage>>,
-}
 
 type TabInfo = {
     icon: LucideIcon,
@@ -37,14 +32,14 @@ const tabInfoData: TabInfo[] = [
     { icon: Settings, page: "Settings" },
 ];
 
-function Tabs({tabState}: {tabState: TabPageState}) {
+function Tabs({tabState}: {tabState: ReactState<TabPage>}) {
     return (
         <TabList>
         {
             tabInfoData.map((e, i) => {
                 return (
                     <TabItem Icon={e.icon} active={tabState.value === e.page}
-                        tabStateSetFn={tabState.setFn} value={e.page} key={i}>
+                        tabState={tabState} currentTab={e.page} key={i}>
                         {e.page}
                     </TabItem>
                 );
@@ -56,7 +51,6 @@ function Tabs({tabState}: {tabState: TabPageState}) {
 
 export type {
     TabPage,
-    TabPageState,
     TabInfo,
 }
 

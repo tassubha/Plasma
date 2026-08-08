@@ -34,8 +34,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/browser-as-client";
 import { Input } from "@/components/ui/input";
+import { ReactState } from "@/lib/react-state";
+import { TabPage } from "../sidebar/tabs/tabs";
 
-function CreatePost({user}: {user: any}) {
+function CreatePost({user, tabState}: {user: any, tabState: ReactState<TabPage>}) {
     const supabase = createClient();
 
     async function onSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
@@ -46,7 +48,11 @@ function CreatePost({user}: {user: any}) {
             .from("user_posts")
             .insert(post)
             .single();
-        if (dbError) console.log(dbError);
+        if (dbError) {
+            console.log(dbError);
+            return;
+        }
+        tabState.set("Home");
     }
 
     return (
