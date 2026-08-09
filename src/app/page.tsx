@@ -8,7 +8,7 @@ async function Page() {
     const { data: authData } = await supabase.auth.getUser();
     if (authData.user === null) return <Homepage/>;
     const { data: dbData, error: dbError } = await supabase
-        .from("user_biometrics")
+        .from("user_info")
         .select("*")
         .eq("id", authData.user.id)
         .single();

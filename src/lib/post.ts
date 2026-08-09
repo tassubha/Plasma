@@ -4,7 +4,7 @@ import {
 } from "./user/user";
 
 type PostInfo = {
-    id: string,
+    userId: string,
     name: string,
     phoneNumber: number,
     district: number,

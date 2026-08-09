@@ -43,7 +43,7 @@ function CreatePost({user, tabState}: {user: any, tabState: ReactState<TabPage>}
     async function onSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
         e.preventDefault();
         let post: PostInfo = PostGetInfo(new FormData(e.currentTarget));
-        post.id = user.id;
+        post.userId = user.id;
         const { error: dbError } = await supabase
             .from("user_posts")
             .insert(post)

@@ -83,7 +83,7 @@ function Register() {
             if (!session) return;
             userCredentials.id = session.user.id;
             const { error: dbError } = await supabase
-                .from("user_biometrics")
+                .from("user_info")
                 .insert(userCredentials)
                 .single();
             if (dbError) {
